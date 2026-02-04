@@ -250,6 +250,15 @@
     transition: transform var(--transition-base), border-color var(--transition-base);
 }
 
+.mobile-action-item:link,
+.mobile-action-item:visited,
+.mobile-action-item:hover,
+.mobile-action-item:focus,
+.mobile-action-item:active {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
 .mobile-action-item:hover {
     transform: translateY(-2px);
     border-color: rgba(99, 102, 241, 0.6);
@@ -307,6 +316,15 @@
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.02em;
+}
+
+.mobile-nav-link:link,
+.mobile-nav-link:visited,
+.mobile-nav-link:hover,
+.mobile-nav-link:focus,
+.mobile-nav-link:active {
+    color: var(--text-muted);
+    text-decoration: none;
 }
 
 .mobile-nav-icon {
