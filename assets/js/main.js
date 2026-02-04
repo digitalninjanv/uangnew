@@ -4,6 +4,11 @@
 document.addEventListener('DOMContentLoaded', function () {
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const navbarMenu = document.getElementById('navbarMenu');
+    const mobileFab = document.getElementById('mobileFab');
+    const mobileActionSheet = document.getElementById('mobileActionSheet');
+    const mobileActionOverlay = document.getElementById('mobileActionOverlay');
+    const mobileActionClose = document.querySelector('.mobile-action-close');
+    const mobileActionLinks = document.querySelectorAll('.mobile-action-item');
 
     if (mobileMenuToggle) {
         mobileMenuToggle.addEventListener('click', function () {
@@ -18,6 +23,46 @@ document.addEventListener('DOMContentLoaded', function () {
                 navbarMenu.classList.remove('active');
             }
         }
+    });
+
+    const toggleActionSheet = (isOpen) => {
+        if (!mobileActionSheet || !mobileActionOverlay) {
+            return;
+        }
+
+        if (isOpen) {
+            mobileActionSheet.classList.add('active');
+            mobileActionOverlay.classList.add('active');
+            document.body.classList.add('no-scroll');
+        } else {
+            mobileActionSheet.classList.remove('active');
+            mobileActionOverlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+    };
+
+    if (mobileFab) {
+        mobileFab.addEventListener('click', function () {
+            toggleActionSheet(true);
+        });
+    }
+
+    if (mobileActionClose) {
+        mobileActionClose.addEventListener('click', function () {
+            toggleActionSheet(false);
+        });
+    }
+
+    if (mobileActionOverlay) {
+        mobileActionOverlay.addEventListener('click', function () {
+            toggleActionSheet(false);
+        });
+    }
+
+    mobileActionLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            toggleActionSheet(false);
+        });
     });
 
     // Auto-dismiss alerts after 5 seconds
